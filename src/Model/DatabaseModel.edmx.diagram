@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0161e07d1ca2497e8a473e3d4cdd22bf" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Cliente" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Comision" Width="1.5" PointX="10.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DevolucionDeFacturas" Width="1.5" PointX="8.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Empresa" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Factura" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FacturasDevolucion" Width="1.5" PointX="10.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FacturasPago" Width="1.5" PointX="8.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FacturasRendicion" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FormaDePago" Width="1.5" PointX="3.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Funcionalidad" Width="1.5" PointX="3.75" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FuncionalidadesRol" Width="1.5" PointX="6" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Item_Factura" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PagoDeFacturas" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Rendicion" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Rol" Width="1.5" PointX="3.75" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.RolesUsuario" Width="1.5" PointX="6" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Rubro" Width="1.5" PointX="1.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Sucursal" Width="1.5" PointX="3.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Usuario" Width="1.5" PointX="3.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UsuariosSucursal" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__Factura__Cliente__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__PagoDeFac__Clien__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__FacturasD__Devol__7A672E12" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Empresa__Rubro__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Factura__Empresa__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Rendicion__Empre__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__FacturasP__Factu__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__FacturasR__Factu__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Item_Fact__Factu__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__FacturasD__Factu__7B5B524B" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__FacturasPa__Pago__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__FacturasR__Rendi__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__PagoDeFac__Metod__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Funcional__Funci__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Funcionalid__Rol__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__PagoDeFac__Sucur__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__RolesUsuari__Rol__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__RolesUsua__Usuar__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__UsuariosS__Sucur__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__UsuariosS__Usuar__534D60F1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

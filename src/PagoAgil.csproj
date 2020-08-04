@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AC76EDC4-20B6-4599-B13A-E03CD10702A0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PagoAgil</RootNamespace>
+    <AssemblyName>PagoAgil</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\Cliente.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Comision.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DatabaseAccess.cs" />
+    <Compile Include="Model\DatabaseModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DatabaseModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DatabaseModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DevolucionDeFacturas.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Empresa.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Factura.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FacturasDevolucion.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FacturasPago.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FacturasRendicion.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FormaDePago.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Funcionalidad.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FuncionalidadesRol.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Item_Factura.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PagoDeFacturas.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Rendicion.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Rol.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RolesUsuario.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Rubro.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Sucursal.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Usuario.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UsuariosSucursal.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AreasViewVM.cs" />
+    <Compile Include="ViewModels\BillReturnViewVM.cs" />
+    <Compile Include="ViewModels\BillsSearchViewVM.cs" />
+    <Compile Include="ViewModels\BillsViewVM.cs" />
+    <Compile Include="ViewModels\Bill_ItemsViewVM.cs" />
+    <Compile Include="ViewModels\BranchesSearchViewVM.cs" />
+    <Compile Include="ViewModels\BranchesViewVM.cs" />
+    <Compile Include="ViewModels\ClientsSearchViewVM.cs" />
+    <Compile Include="ViewModels\ClientsViewVM.cs" />
+    <Compile Include="ViewModels\EnterprisesSearchViewVM.cs" />
+    <Compile Include="ViewModels\EnterprisesViewVM.cs" />
+    <Compile Include="ViewModels\FindBillsViewVM.cs" />
+    <Compile Include="ViewModels\FindClientsViewVM.cs" />
+    <Compile Include="ViewModels\InvoiceAccountingVM.cs" />
+    <Compile Include="ViewModels\LoginViewVM.cs" />
+    <Compile Include="ViewModels\MainViewVM.cs" />
+    <Compile Include="ViewModels\PaymentsViewVM.cs" />
+    <Compile Include="ViewModels\RoleSelectionViewVM.cs" />
+    <Compile Include="ViewModels\RolesSearchViewVM.cs" />
+    <Compile Include="ViewModels\RolesViewVM.cs" />
+    <Compile Include="ViewModels\StatisticalListsViewVM.cs" />
+    <Compile Include="Views\Clients\ClientsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Clients\ClientsView.Designer.cs">
+      <DependentUpon>ClientsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clients\ClientsSearchView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Clients\ClientsSearchView.Designer.cs">
+      <DependentUpon>ClientsSearchView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Enterprises\EnterprisesSearchView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Enterprises\EnterprisesSearchView.Designer.cs">
+      <DependentUpon>EnterprisesSearchView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Enterprises\EnterprisesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Enterprises\EnterprisesView.Designer.cs">
+      <DependentUpon>EnterprisesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Bills\Bill_ItemsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Bills\Bill_ItemsView.Designer.cs">
+      <DependentUpon>Bill_ItemsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Bills\BillsSearchView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Bills\BillsSearchView.Designer.cs">
+      <DependentUpon>BillsSearchView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Bills\BillsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Bills\BillsView.Designer.cs">
+      <DependentUpon>BillsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Roles\RolesSearchView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Roles\RolesSearchView.Designer.cs">
+      <DependentUpon>RolesSearchView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Roles\RolesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Roles\RolesView.Designer.cs">
+      <DependentUpon>RolesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Areas\AreasView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Areas\AreasView.Designer.cs">
+      <DependentUpon>AreasView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Branches\BranchesSearchView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Branches\BranchesSearchView.Designer.cs">
+      <DependentUpon>BranchesSearchView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Branches\BranchesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Branches\BranchesView.Designer.cs">
+      <DependentUpon>BranchesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchViews\FindClientsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SearchViews\FindClientsView.Designer.cs">
+      <DependentUpon>FindClientsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchViews\FindBillsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SearchViews\FindBillsView.Designer.cs">
+      <DependentUpon>FindBillsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BillReturn\BillReturnView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\BillReturn\BillReturnView.Designer.cs">
+      <DependentUpon>BillReturnView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MiscMethods\PropertyBinding.cs" />
+    <Compile Include="MiscMethods\Validation.cs" />
+    <Compile Include="Views\Main\LoginView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Main\LoginView.Designer.cs">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Main\MainView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Main\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatisticalLists\StatisticalListsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\StatisticalLists\StatisticalListsView.Designer.cs">
+      <DependentUpon>StatisticalListsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BillSearchingForm.cs" />
+    <Compile Include="Model\ClientSearchingForm.cs" />
+    <Compile Include="Model\Login.cs" />
+    <Compile Include="Model\TextValuePair.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Payments\PaymentsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Payments\PaymentsView.Designer.cs">
+      <DependentUpon>PaymentsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Accountability\InvoiceAccounting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Accountability\InvoiceAccounting.Designer.cs">
+      <DependentUpon>InvoiceAccounting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Main\RoleSelectionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Main\RoleSelectionView.Designer.cs">
+      <DependentUpon>RoleSelectionView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\Clients\ClientsView.resx">
+      <DependentUpon>ClientsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Clients\ClientsSearchView.resx">
+      <DependentUpon>ClientsSearchView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Enterprises\EnterprisesView.resx">
+      <DependentUpon>EnterprisesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Enterprises\EnterprisesSearchView.resx">
+      <DependentUpon>EnterprisesSearchView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Bills\BillsView.resx">
+      <DependentUpon>BillsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Bills\Bill_ItemsView.resx">
+      <DependentUpon>Bill_ItemsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Bills\BillsSearchView.resx">
+      <DependentUpon>BillsSearchView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Roles\RolesView.resx">
+      <DependentUpon>RolesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Roles\RolesSearchView.resx">
+      <DependentUpon>RolesSearchView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Areas\AreasView.resx">
+      <DependentUpon>AreasView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Branches\BranchesView.resx">
+      <DependentUpon>BranchesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Branches\BranchesSearchView.resx">
+      <DependentUpon>BranchesSearchView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SearchViews\FindClientsView.resx">
+      <DependentUpon>FindClientsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SearchViews\FindBillsView.resx">
+      <DependentUpon>FindBillsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BillReturn\BillReturnView.resx">
+      <DependentUpon>BillReturnView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\StatisticalLists\StatisticalListsView.resx">
+      <DependentUpon>StatisticalListsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Main\LoginView.resx">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Main\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Views\Payments\PaymentsView.resx">
+      <DependentUpon>PaymentsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Accountability\InvoiceAccounting.resx">
+      <DependentUpon>InvoiceAccounting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Main\RoleSelectionView.resx">
+      <DependentUpon>RoleSelectionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model\DatabaseModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DatabaseModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\DatabaseModel.edmx.diagram">
+      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Model\DatabaseModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>DatabaseModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\DatabaseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>DatabaseModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,573 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="idCliente" />
+    </Key>
+    <Property Name="idCliente" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DNI" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Mail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cod_Postal" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fecha_Nac" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="DatosErroneos" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Factura" Relationship="Self.FK__Factura__Cliente__5BE2A6F2" FromRole="Cliente" ToRole="Factura" />
+    <NavigationProperty Name="PagoDeFacturas" Relationship="Self.FK__PagoDeFac__Clien__70DDC3D8" FromRole="Cliente" ToRole="PagoDeFacturas" />
+  </EntityType>
+  <EntityType Name="Comision">
+    <Key>
+      <PropertyRef Name="idComision" />
+    </Key>
+    <Property Name="idComision" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PorcentajeComision" Type="Int32" Nullable="false" />
+    <Property Name="FechaDeInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaDeFin" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="DevolucionDeFacturas">
+    <Key>
+      <PropertyRef Name="idDevolucion" />
+    </Key>
+    <Property Name="idDevolucion" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Motivo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="FacturasDevolucion" Relationship="Self.FK__FacturasD__Devol__7A672E12" FromRole="DevolucionDeFacturas" ToRole="FacturasDevolucion" />
+  </EntityType>
+  <EntityType Name="Empresa">
+    <Key>
+      <PropertyRef Name="idEmpresa" />
+    </Key>
+    <Property Name="idEmpresa" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cuit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Rubro" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Activa" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Rubro1" Relationship="Self.FK__Empresa__Rubro__4BAC3F29" FromRole="Empresa" ToRole="Rubro" />
+    <NavigationProperty Name="Factura" Relationship="Self.FK__Factura__Empresa__5CD6CB2B" FromRole="Empresa" ToRole="Factura" />
+    <NavigationProperty Name="Rendicion" Relationship="Self.FK__Rendicion__Empre__6754599E" FromRole="Empresa" ToRole="Rendicion" />
+  </EntityType>
+  <EntityType Name="Factura">
+    <Key>
+      <PropertyRef Name="idFactura" />
+    </Key>
+    <Property Name="idFactura" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cliente" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Empresa" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Nro_Factura" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaVenc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Pagada" Type="Boolean" Nullable="false" />
+    <Property Name="Rendida" Type="Boolean" Nullable="false" />
+    <Property Name="Activa" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Cliente1" Relationship="Self.FK__Factura__Cliente__5BE2A6F2" FromRole="Factura" ToRole="Cliente" />
+    <NavigationProperty Name="Empresa1" Relationship="Self.FK__Factura__Empresa__5CD6CB2B" FromRole="Factura" ToRole="Empresa" />
+    <NavigationProperty Name="FacturasPago" Relationship="Self.FK__FacturasP__Factu__75A278F5" FromRole="Factura" ToRole="FacturasPago" />
+    <NavigationProperty Name="FacturasRendicion" Relationship="Self.FK__FacturasR__Factu__6A30C649" FromRole="Factura" ToRole="FacturasRendicion" />
+    <NavigationProperty Name="Item_Factura" Relationship="Self.FK__Item_Fact__Factu__6383C8BA" FromRole="Factura" ToRole="Item_Factura" />
+  </EntityType>
+  <EntityType Name="FacturasDevolucion">
+    <Key>
+      <PropertyRef Name="idFacturaDevolucion" />
+    </Key>
+    <Property Name="idFacturaDevolucion" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Devolucion" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="FacturaPago" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="DevolucionDeFacturas" Relationship="Self.FK__FacturasD__Devol__7A672E12" FromRole="FacturasDevolucion" ToRole="DevolucionDeFacturas" />
+    <NavigationProperty Name="FacturasPago" Relationship="Self.FK__FacturasD__Factu__7B5B524B" FromRole="FacturasDevolucion" ToRole="FacturasPago" />
+  </EntityType>
+  <EntityType Name="FacturasPago">
+    <Key>
+      <PropertyRef Name="idFacturaPago" />
+    </Key>
+    <Property Name="idFacturaPago" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pago" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Factura" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Factura1" Relationship="Self.FK__FacturasP__Factu__75A278F5" FromRole="FacturasPago" ToRole="Factura" />
+    <NavigationProperty Name="FacturasDevolucion" Relationship="Self.FK__FacturasD__Factu__7B5B524B" FromRole="FacturasPago" ToRole="FacturasDevolucion" />
+    <NavigationProperty Name="PagoDeFacturas" Relationship="Self.FK__FacturasPa__Pago__74AE54BC" FromRole="FacturasPago" ToRole="PagoDeFacturas" />
+  </EntityType>
+  <EntityType Name="FacturasRendicion">
+    <Key>
+      <PropertyRef Name="idFacturaRendicion" />
+    </Key>
+    <Property Name="idFacturaRendicion" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Factura" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Rendicion" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Factura1" Relationship="Self.FK__FacturasR__Factu__6A30C649" FromRole="FacturasRendicion" ToRole="Factura" />
+    <NavigationProperty Name="Rendicion1" Relationship="Self.FK__FacturasR__Rendi__6B24EA82" FromRole="FacturasRendicion" ToRole="Rendicion" />
+  </EntityType>
+  <EntityType Name="FormaDePago">
+    <Key>
+      <PropertyRef Name="idFormaPago" />
+    </Key>
+    <Property Name="idFormaPago" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PagoDeFacturas" Relationship="Self.FK__PagoDeFac__Metod__71D1E811" FromRole="FormaDePago" ToRole="PagoDeFacturas" />
+  </EntityType>
+  <EntityType Name="Funcionalidad">
+    <Key>
+      <PropertyRef Name="idFuncionalidad" />
+    </Key>
+    <Property Name="idFuncionalidad" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="FuncionalidadesRol" Relationship="Self.FK__Funcional__Funci__3E52440B" FromRole="Funcionalidad" ToRole="FuncionalidadesRol" />
+  </EntityType>
+  <EntityType Name="FuncionalidadesRol">
+    <Key>
+      <PropertyRef Name="idFuncionalidadRol" />
+    </Key>
+    <Property Name="idFuncionalidadRol" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rol" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Funcionalidad" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Funcionalidad1" Relationship="Self.FK__Funcional__Funci__3E52440B" FromRole="FuncionalidadesRol" ToRole="Funcionalidad" />
+    <NavigationProperty Name="Rol1" Relationship="Self.FK__Funcionalid__Rol__3D5E1FD2" FromRole="FuncionalidadesRol" ToRole="Rol" />
+  </EntityType>
+  <EntityType Name="Item_Factura">
+    <Key>
+      <PropertyRef Name="idItem" />
+    </Key>
+    <Property Name="idItem" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Factura" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Factura1" Relationship="Self.FK__Item_Fact__Factu__6383C8BA" FromRole="Item_Factura" ToRole="Factura" />
+  </EntityType>
+  <EntityType Name="PagoDeFacturas">
+    <Key>
+      <PropertyRef Name="idPago" />
+    </Key>
+    <Property Name="idPago" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sucursal" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Cliente" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="MetodoPago" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Cliente1" Relationship="Self.FK__PagoDeFac__Clien__70DDC3D8" FromRole="PagoDeFacturas" ToRole="Cliente" />
+    <NavigationProperty Name="FacturasPago" Relationship="Self.FK__FacturasPa__Pago__74AE54BC" FromRole="PagoDeFacturas" ToRole="FacturasPago" />
+    <NavigationProperty Name="FormaDePago" Relationship="Self.FK__PagoDeFac__Metod__71D1E811" FromRole="PagoDeFacturas" ToRole="FormaDePago" />
+    <NavigationProperty Name="Sucursal1" Relationship="Self.FK__PagoDeFac__Sucur__6FE99F9F" FromRole="PagoDeFacturas" ToRole="Sucursal" />
+  </EntityType>
+  <EntityType Name="Rendicion">
+    <Key>
+      <PropertyRef Name="idRendicion" />
+    </Key>
+    <Property Name="idRendicion" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Empresa" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FacturasRendidas" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ImporteTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PorcentajeComision" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="TotalComision" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Empresa1" Relationship="Self.FK__Rendicion__Empre__6754599E" FromRole="Rendicion" ToRole="Empresa" />
+    <NavigationProperty Name="FacturasRendicion" Relationship="Self.FK__FacturasR__Rendi__6B24EA82" FromRole="Rendicion" ToRole="FacturasRendicion" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="idRol" />
+    </Key>
+    <Property Name="idRol" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="FuncionalidadesRol" Relationship="Self.FK__Funcionalid__Rol__3D5E1FD2" FromRole="Rol" ToRole="FuncionalidadesRol" />
+    <NavigationProperty Name="RolesUsuario" Relationship="Self.FK__RolesUsuari__Rol__45F365D3" FromRole="Rol" ToRole="RolesUsuario" />
+  </EntityType>
+  <EntityType Name="RolesUsuario">
+    <Key>
+      <PropertyRef Name="idRolUsuario" />
+    </Key>
+    <Property Name="idRolUsuario" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usuario" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Rol" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Rol1" Relationship="Self.FK__RolesUsuari__Rol__45F365D3" FromRole="RolesUsuario" ToRole="Rol" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FK__RolesUsua__Usuar__44FF419A" FromRole="RolesUsuario" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Rubro">
+    <Key>
+      <PropertyRef Name="idRubro" />
+    </Key>
+    <Property Name="idRubro" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Empresa" Relationship="Self.FK__Empresa__Rubro__4BAC3F29" FromRole="Rubro" ToRole="Empresa" />
+  </EntityType>
+  <EntityType Name="Sucursal">
+    <Key>
+      <PropertyRef Name="idSucursal" />
+    </Key>
+    <Property Name="idSucursal" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cod_Postal" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Activa" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="PagoDeFacturas" Relationship="Self.FK__PagoDeFac__Sucur__6FE99F9F" FromRole="Sucursal" ToRole="PagoDeFacturas" />
+    <NavigationProperty Name="UsuariosSucursal" Relationship="Self.FK__UsuariosS__Sucur__5441852A" FromRole="Sucursal" ToRole="UsuariosSucursal" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pass" Type="Binary" MaxLength="32" FixedLength="false" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="RolesUsuario" Relationship="Self.FK__RolesUsua__Usuar__44FF419A" FromRole="Usuario" ToRole="RolesUsuario" />
+    <NavigationProperty Name="UsuariosSucursal" Relationship="Self.FK__UsuariosS__Usuar__534D60F1" FromRole="Usuario" ToRole="UsuariosSucursal" />
+  </EntityType>
+  <EntityType Name="UsuariosSucursal">
+    <Key>
+      <PropertyRef Name="idUsuarioSucursal" />
+    </Key>
+    <Property Name="idUsuarioSucursal" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usuario" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Sucursal" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Sucursal1" Relationship="Self.FK__UsuariosS__Sucur__5441852A" FromRole="UsuariosSucursal" ToRole="Sucursal" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FK__UsuariosS__Usuar__534D60F1" FromRole="UsuariosSucursal" ToRole="Usuario" />
+  </EntityType>
+  <Association Name="FK__Factura__Cliente__5BE2A6F2">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PagoDeFac__Clien__70DDC3D8">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="PagoDeFacturas" Type="Self.PagoDeFacturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="PagoDeFacturas">
+        <PropertyRef Name="Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FacturasD__Devol__7A672E12">
+    <End Role="DevolucionDeFacturas" Type="Self.DevolucionDeFacturas" Multiplicity="1" />
+    <End Role="FacturasDevolucion" Type="Self.FacturasDevolucion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DevolucionDeFacturas">
+        <PropertyRef Name="idDevolucion" />
+      </Principal>
+      <Dependent Role="FacturasDevolucion">
+        <PropertyRef Name="Devolucion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Empresa__Rubro__4BAC3F29">
+    <End Role="Rubro" Type="Self.Rubro" Multiplicity="1" />
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rubro">
+        <PropertyRef Name="idRubro" />
+      </Principal>
+      <Dependent Role="Empresa">
+        <PropertyRef Name="Rubro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Factura__Empresa__5CD6CB2B">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+    <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="idEmpresa" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="Empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rendicion__Empre__6754599E">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+    <End Role="Rendicion" Type="Self.Rendicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="idEmpresa" />
+      </Principal>
+      <Dependent Role="Rendicion">
+        <PropertyRef Name="Empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FacturasP__Factu__75A278F5">
+    <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
+    <End Role="FacturasPago" Type="Self.FacturasPago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Factura">
+        <PropertyRef Name="idFactura" />
+      </Principal>
+      <Dependent Role="FacturasPago">
+        <PropertyRef Name="Factura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FacturasR__Factu__6A30C649">
+    <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
+    <End Role="FacturasRendicion" Type="Self.FacturasRendicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Factura">
+        <PropertyRef Name="idFactura" />
+      </Principal>
+      <Dependent Role="FacturasRendicion">
+        <PropertyRef Name="Factura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Item_Fact__Factu__6383C8BA">
+    <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
+    <End Role="Item_Factura" Type="Self.Item_Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Factura">
+        <PropertyRef Name="idFactura" />
+      </Principal>
+      <Dependent Role="Item_Factura">
+        <PropertyRef Name="Factura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FacturasD__Factu__7B5B524B">
+    <End Role="FacturasPago" Type="Self.FacturasPago" Multiplicity="1" />
+    <End Role="FacturasDevolucion" Type="Self.FacturasDevolucion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FacturasPago">
+        <PropertyRef Name="idFacturaPago" />
+      </Principal>
+      <Dependent Role="FacturasDevolucion">
+        <PropertyRef Name="FacturaPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FacturasPa__Pago__74AE54BC">
+    <End Role="PagoDeFacturas" Type="Self.PagoDeFacturas" Multiplicity="1" />
+    <End Role="FacturasPago" Type="Self.FacturasPago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PagoDeFacturas">
+        <PropertyRef Name="idPago" />
+      </Principal>
+      <Dependent Role="FacturasPago">
+        <PropertyRef Name="Pago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FacturasR__Rendi__6B24EA82">
+    <End Role="Rendicion" Type="Self.Rendicion" Multiplicity="1" />
+    <End Role="FacturasRendicion" Type="Self.FacturasRendicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rendicion">
+        <PropertyRef Name="idRendicion" />
+      </Principal>
+      <Dependent Role="FacturasRendicion">
+        <PropertyRef Name="Rendicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PagoDeFac__Metod__71D1E811">
+    <End Role="FormaDePago" Type="Self.FormaDePago" Multiplicity="1" />
+    <End Role="PagoDeFacturas" Type="Self.PagoDeFacturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormaDePago">
+        <PropertyRef Name="idFormaPago" />
+      </Principal>
+      <Dependent Role="PagoDeFacturas">
+        <PropertyRef Name="MetodoPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Funcional__Funci__3E52440B">
+    <End Role="Funcionalidad" Type="Self.Funcionalidad" Multiplicity="1" />
+    <End Role="FuncionalidadesRol" Type="Self.FuncionalidadesRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Funcionalidad">
+        <PropertyRef Name="idFuncionalidad" />
+      </Principal>
+      <Dependent Role="FuncionalidadesRol">
+        <PropertyRef Name="Funcionalidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Funcionalid__Rol__3D5E1FD2">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="FuncionalidadesRol" Type="Self.FuncionalidadesRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="FuncionalidadesRol">
+        <PropertyRef Name="Rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PagoDeFac__Sucur__6FE99F9F">
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+    <End Role="PagoDeFacturas" Type="Self.PagoDeFacturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursal">
+        <PropertyRef Name="idSucursal" />
+      </Principal>
+      <Dependent Role="PagoDeFacturas">
+        <PropertyRef Name="Sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RolesUsuari__Rol__45F365D3">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="RolesUsuario" Type="Self.RolesUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="RolesUsuario">
+        <PropertyRef Name="Rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RolesUsua__Usuar__44FF419A">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="RolesUsuario" Type="Self.RolesUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="RolesUsuario">
+        <PropertyRef Name="Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UsuariosS__Sucur__5441852A">
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+    <End Role="UsuariosSucursal" Type="Self.UsuariosSucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursal">
+        <PropertyRef Name="idSucursal" />
+      </Principal>
+      <Dependent Role="UsuariosSucursal">
+        <PropertyRef Name="Sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UsuariosS__Usuar__534D60F1">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="UsuariosSucursal" Type="Self.UsuariosSucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="UsuariosSucursal">
+        <PropertyRef Name="Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+    <EntitySet Name="Comision" EntityType="Self.Comision" />
+    <EntitySet Name="DevolucionDeFacturas" EntityType="Self.DevolucionDeFacturas" />
+    <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+    <EntitySet Name="Factura" EntityType="Self.Factura" />
+    <EntitySet Name="FacturasDevolucion" EntityType="Self.FacturasDevolucion" />
+    <EntitySet Name="FacturasPago" EntityType="Self.FacturasPago" />
+    <EntitySet Name="FacturasRendicion" EntityType="Self.FacturasRendicion" />
+    <EntitySet Name="FormaDePago" EntityType="Self.FormaDePago" />
+    <EntitySet Name="Funcionalidad" EntityType="Self.Funcionalidad" />
+    <EntitySet Name="FuncionalidadesRol" EntityType="Self.FuncionalidadesRol" />
+    <EntitySet Name="Item_Factura" EntityType="Self.Item_Factura" />
+    <EntitySet Name="PagoDeFacturas" EntityType="Self.PagoDeFacturas" />
+    <EntitySet Name="Rendicion" EntityType="Self.Rendicion" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" />
+    <EntitySet Name="RolesUsuario" EntityType="Self.RolesUsuario" />
+    <EntitySet Name="Rubro" EntityType="Self.Rubro" />
+    <EntitySet Name="Sucursal" EntityType="Self.Sucursal" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <EntitySet Name="UsuariosSucursal" EntityType="Self.UsuariosSucursal" />
+    <AssociationSet Name="FK__Factura__Cliente__5BE2A6F2" Association="Self.FK__Factura__Cliente__5BE2A6F2">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Factura" EntitySet="Factura" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PagoDeFac__Clien__70DDC3D8" Association="Self.FK__PagoDeFac__Clien__70DDC3D8">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="PagoDeFacturas" EntitySet="PagoDeFacturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FacturasD__Devol__7A672E12" Association="Self.FK__FacturasD__Devol__7A672E12">
+      <End Role="DevolucionDeFacturas" EntitySet="DevolucionDeFacturas" />
+      <End Role="FacturasDevolucion" EntitySet="FacturasDevolucion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Empresa__Rubro__4BAC3F29" Association="Self.FK__Empresa__Rubro__4BAC3F29">
+      <End Role="Rubro" EntitySet="Rubro" />
+      <End Role="Empresa" EntitySet="Empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Factura__Empresa__5CD6CB2B" Association="Self.FK__Factura__Empresa__5CD6CB2B">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Factura" EntitySet="Factura" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rendicion__Empre__6754599E" Association="Self.FK__Rendicion__Empre__6754599E">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Rendicion" EntitySet="Rendicion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FacturasP__Factu__75A278F5" Association="Self.FK__FacturasP__Factu__75A278F5">
+      <End Role="Factura" EntitySet="Factura" />
+      <End Role="FacturasPago" EntitySet="FacturasPago" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FacturasR__Factu__6A30C649" Association="Self.FK__FacturasR__Factu__6A30C649">
+      <End Role="Factura" EntitySet="Factura" />
+      <End Role="FacturasRendicion" EntitySet="FacturasRendicion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Item_Fact__Factu__6383C8BA" Association="Self.FK__Item_Fact__Factu__6383C8BA">
+      <End Role="Factura" EntitySet="Factura" />
+      <End Role="Item_Factura" EntitySet="Item_Factura" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FacturasD__Factu__7B5B524B" Association="Self.FK__FacturasD__Factu__7B5B524B">
+      <End Role="FacturasPago" EntitySet="FacturasPago" />
+      <End Role="FacturasDevolucion" EntitySet="FacturasDevolucion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FacturasPa__Pago__74AE54BC" Association="Self.FK__FacturasPa__Pago__74AE54BC">
+      <End Role="PagoDeFacturas" EntitySet="PagoDeFacturas" />
+      <End Role="FacturasPago" EntitySet="FacturasPago" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FacturasR__Rendi__6B24EA82" Association="Self.FK__FacturasR__Rendi__6B24EA82">
+      <End Role="Rendicion" EntitySet="Rendicion" />
+      <End Role="FacturasRendicion" EntitySet="FacturasRendicion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PagoDeFac__Metod__71D1E811" Association="Self.FK__PagoDeFac__Metod__71D1E811">
+      <End Role="FormaDePago" EntitySet="FormaDePago" />
+      <End Role="PagoDeFacturas" EntitySet="PagoDeFacturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Funcional__Funci__3E52440B" Association="Self.FK__Funcional__Funci__3E52440B">
+      <End Role="Funcionalidad" EntitySet="Funcionalidad" />
+      <End Role="FuncionalidadesRol" EntitySet="FuncionalidadesRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Funcionalid__Rol__3D5E1FD2" Association="Self.FK__Funcionalid__Rol__3D5E1FD2">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="FuncionalidadesRol" EntitySet="FuncionalidadesRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PagoDeFac__Sucur__6FE99F9F" Association="Self.FK__PagoDeFac__Sucur__6FE99F9F">
+      <End Role="Sucursal" EntitySet="Sucursal" />
+      <End Role="PagoDeFacturas" EntitySet="PagoDeFacturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RolesUsuari__Rol__45F365D3" Association="Self.FK__RolesUsuari__Rol__45F365D3">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="RolesUsuario" EntitySet="RolesUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RolesUsua__Usuar__44FF419A" Association="Self.FK__RolesUsua__Usuar__44FF419A">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="RolesUsuario" EntitySet="RolesUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UsuariosS__Sucur__5441852A" Association="Self.FK__UsuariosS__Sucur__5441852A">
+      <End Role="Sucursal" EntitySet="Sucursal" />
+      <End Role="UsuariosSucursal" EntitySet="UsuariosSucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UsuariosS__Usuar__534D60F1" Association="Self.FK__UsuariosS__Usuar__534D60F1">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="UsuariosSucursal" EntitySet="UsuariosSucursal" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
